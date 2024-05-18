@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weatherapp.R
-import com.example.weatherapp.data.model.Data
 import com.example.weatherapp.data.model.WeatherForeCastResult
 import com.example.weatherapp.ui.presentation.viewModel.WeatherForecastVM
 import com.example.weatherapp.ui.presentation.viewModel.WeatherHomeUiEvent
@@ -57,8 +56,6 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-
-var number = listOf(1, 2, 3, 4)
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -113,7 +110,7 @@ fun WeatherHomeScreen(
                 dateFromApi = state.data!!.data[0].datetime,
                 weatherDesc = state.data.data[0].weather.description,
                 temperature = state.data.data[0].temp.toString(),
-                location = state.data.city_name,
+                location = state.data.cityName,
                 weatherCode = state.data.data[0].weather.code,
             )
 

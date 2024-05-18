@@ -12,7 +12,6 @@ class WeatherRepositoryImpl (
 
     override suspend fun getDailyForeCast(city: String): Flow<Result<WeatherForeCastResult>> {
         return flow {
-            emit(Result.Loading())
             val weatherForeCastApiResult = try {
                 api.getDailyForeCast(city)
             } catch (e: Exception){

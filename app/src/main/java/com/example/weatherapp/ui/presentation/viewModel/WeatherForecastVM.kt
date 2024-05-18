@@ -18,11 +18,11 @@ import javax.inject.Inject
 class WeatherForecastVM @Inject constructor(
     private val weatherRepository: WeatherRepository,
 ) : ViewModel() {
-    val TAG = "WEATHER API"
+    private val tag = "WEATHER API"
 
 
     // getting the state of the app screen
-    private var _weatherForeCastState = MutableStateFlow<WeatherHomeState>(WeatherHomeState())
+    private var _weatherForeCastState = MutableStateFlow(WeatherHomeState())
     val weatherForeCastState = _weatherForeCastState.asStateFlow()
 
     init {
@@ -30,7 +30,7 @@ class WeatherForecastVM @Inject constructor(
             weatherRepository.getDailyForeCast("Onitsha").collectLatest { result ->
                 when (result) {
                     is Result.Error -> {
-                        Log.d(TAG, "Error fetching the weather details of the app")
+                        Log.d(tag, "Error fetching the weather details of the app")
                     }
 
                     is Result.Loading -> {
@@ -40,7 +40,7 @@ class WeatherForecastVM @Inject constructor(
                             )
                         }
                         Log.d(
-                            TAG,
+                            tag,
                             "Loading Screen: The weather api forecast is still in background"
                         )
                     }
@@ -65,7 +65,7 @@ class WeatherForecastVM @Inject constructor(
                     weatherRepository.getDailyForeCast(event.city).collectLatest { result ->
                         when (result) {
                             is Result.Error -> {
-                                Log.d(TAG, "Error fetching the weather details of the app")
+                                Log.d(tag, "Error fetching the weather details of the app")
                             }
 
                             is Result.Loading -> {

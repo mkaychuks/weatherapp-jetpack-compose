@@ -22,11 +22,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,10 +34,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weatherapp.R
 import com.example.weatherapp.data.model.WeatherForeCastResult
-import kotlinx.coroutines.delay
 
 data class Description(
     val icon: Int,
@@ -69,7 +65,7 @@ fun WeatherDetailScreen(
         Description(
             icon = R.drawable.windy_line,
             description = "Wind Velocity",
-            value = "${weatherForeCastResult.data[0].wind_spd}m/s"
+            value = "${weatherForeCastResult.data[0].windSpd}m/s"
         ),
         Description(
             icon = R.drawable.mist_line,
@@ -87,8 +83,8 @@ fun WeatherDetailScreen(
         // the back button and the location
         WeatherDetailsCard(
             onNavigationBackButtonPressed = onNavigationBackButtonPressed,
-            location = weatherForeCastResult.city_name,
-            country = weatherForeCastResult.country_code,
+            location = weatherForeCastResult.cityName,
+            country = weatherForeCastResult.countryCode,
             weatherCode = weatherForeCastResult.data[0].weather.code,
             dateFromApi = weatherForeCastResult.data[0].datetime,
             weatherDesc = weatherForeCastResult.data[0].weather.description,

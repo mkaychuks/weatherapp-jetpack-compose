@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class WeatherForeCastResult(
-    val city_name: String,
-    val country_code: String,
+    val cityName: String,
+    val countryCode: String,
     val data: List<Data>,
     val lat: String,
     val lon: String,
-    val state_code: String,
+    val stateCode: String,
     val timezone: String
 ): Parcelable
